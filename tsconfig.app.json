@@ -4,9 +4,11 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": ["jasmine", "node"],
+    "forceConsistentCasingInFileNames": true
   },
   "files": [
+    "src/polyfills.ts",
     "src/main.ts"
   ],
   "include": [

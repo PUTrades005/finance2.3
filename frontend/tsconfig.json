@@ -1,0 +1,35 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"],
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "paths": {
+      "frontend/*": ["frontend/*"],
+      "environments/*": ["src/environments/*"]
+    }
+  },
+  "files": [
+    "src/main.ts",
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ],
+  "angularCompilerOptions": {
+    "extendedDiagnostics": {
+      "checks": { "unusedStandaloneImports": "suppress" },
+    "enableIvy": true
+  }
+}
+}

@@ -1,0 +1,37 @@
+<!-- src/app/dashboard/dashboard.component.html -->
+<div class="dashboard">
+  <h1>📈 ryan loves leightons cock :O <==8</h1>
+
+  <!-- Search bar -->
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="symbol"
+      placeholder="Enter symbol (e.g. AAPL)"
+      (keyup.enter)="onSearch()"
+    />
+    <button (click)="onSearch()">Search</button>
+  </div>
+
+  <!-- Status messages -->
+  <p *ngIf="loading">Loading data…</p>
+  <p *ngIf="error" class="error">{{ error }}</p>
+
+  <!-- Chart canvas -->
+  <div *ngIf="series.length">
+    <canvas #chartCanvas></canvas>
+  </div>
+
+  <!-- Data table as fallback/viewable list -->
+  <table *ngIf="series.length" class="data-table">
+    <thead>
+      <tr><th>Date</th><th>Close</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pt of series">
+        <td>{{ pt.date }}</td>
+        <td>{{ pt.close | number:'1.2-2' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

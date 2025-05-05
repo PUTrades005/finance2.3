@@ -1,0 +1,17 @@
+<nav class="navbar">
+  <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+  <div class="brand">{{ title }}</div>
+</nav>
+
+<aside class="sidebar" [class.open]="menuOpen">
+  <ul class="nav-links">
+    <li><a routerLink="/"      (click)="toggleMenu()">Dashboard</a></li>
+    <li><a routerLink="/users" (click)="toggleMenu()">Users</a></li>
+  </ul>
+</aside>
+
+<div class="overlay" *ngIf="menuOpen" (click)="toggleMenu()"></div>
+
+<div class="main">
+  <router-outlet></router-outlet>
+</div>
