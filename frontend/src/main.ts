@@ -2,13 +2,17 @@
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
-import { environment } from '../environments/environment';
-import { provideRouter } from '@angular/router';
-import ROUTES from './app/app.routes';
+import { environment } from './environments/environment';
+import { provideRouter, Route } from '@angular/router';
+import { routes } from './app/app.routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
+
+export const ROUTES: Route[] = [
+  // your route definitions
+];
 
 if (environment.production) {
   enableProdMode();

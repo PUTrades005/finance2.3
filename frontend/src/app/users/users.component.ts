@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 // Use absolute path import for environment
-import { environment } from '../../../environments/environment'
+import { environment } from '../../environments/environment'
 
 export interface User {
   id: string;

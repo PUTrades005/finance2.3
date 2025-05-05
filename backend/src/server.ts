@@ -1,44 +1,23 @@
-// src/users.server.ts
-import { Router, Request, Response } from 'express';
-import { UsersService, User } from './users.service';
+// src/server.ts
+import express from 'express';
+import userRouter from './users.server';
 
 
+const app = express();
+const PORT = 3000;
 
-// Create and configure the router
-const userRouter = Router();
-const usersService = new UsersService();
+// Middleware to parse JSON
+app.use(express.json());
 
-// GET /api/users -> List all users
-userRouter.get('/', (req: Request, res: Response<User[]>) => {
-  res.json(usersService.findAll());
+// Mount your user routes at /api/users
+app.use('/api/users', userRouter);
+
+// Optional base route for testing
+app.get('/', (req, res) => {
+  res.send('Backend is live!');
 });
 
-// GET /api/users/:id -> Get user by ID
-userRouter.get('/:id', (req: Request, res: Response<User | { message: string }>) => {
-  const user = usersService.findById(req.params.id);
-  if (user) res.json(user);
-  else res.status(404).json({ message: 'User not found' });
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
-
-// POST /api/users -> Create a new user
-userRouter.post('/', (req: Request, res: Response<User>) => {
-  const newUser = usersService.create(req.body);
-  res.status(201).json(newUser);
-});
-
-// PUT /api/users/:id -> Update existing user
-userRouter.put('/:id', (req: Request, res: Response<User | { message: string }>) => {
-  const updated = usersService.update(req.params.id, req.body);
-  if (updated) res.json(updated);
-  else res.status(404).json({ message: 'User not found' });
-});
-
-// DELETE /api/users/:id -> Delete user
-userRouter.delete('/:id', (req: Request, res: Response) => {
-  const ok = usersService.delete(req.params.id);
-  if (ok) res.status(204).send();
-  else res.status(404).json({ message: 'User not found' });
-});
-
-// Export as default so server.ts can import without braces
-export default userRouter;

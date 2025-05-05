@@ -2,34 +2,25 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+    "outDir": "./out-tsc/app",
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "module": "es2020",
     "moduleResolution": "node",
-    "importHelpers": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "target": "es2015",
-    "typeRoots": ["node_modules/@types"],
+    "module": "esnext",
     "lib": ["es2018", "dom"],
-    "forceConsistentCasingInFileNames": true,
+    "types": ["jasmine", "node"],
     "strict": true,
-    "paths": {
-      "frontend/*": ["frontend/*"],
-      "environments/*": ["src/environments/*"]
-    }
+    "forceConsistentCasingInFileNames": true
   },
-  "files": [
-    "src/main.ts",
-  ],
   "include": [
-    "src/**/*.d.ts"
+    "**/*.ts"
   ],
-  "angularCompilerOptions": {
-    "extendedDiagnostics": {
-      "checks": { "unusedStandaloneImports": "suppress" },
-    "enableIvy": true
-  }
-}
+  "exclude": [
+    "node_modules",
+    "dist",
+    "out-tsc"
+  ]
 }

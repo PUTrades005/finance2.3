@@ -6,7 +6,7 @@ import { UsersComponent } from './users/users.component';
 // Note: include .ts extension to ensure module resolution
 import { LoginComponent } from '../app/login/login.component';
 import { RegisterComponent } from './register.components';
-import { AuthGuard } from '../../../backend/auth/auth.guard';
+import { AuthGuard } from './auth/auth.guard';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
